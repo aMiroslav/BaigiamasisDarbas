@@ -59,5 +59,3 @@ df_cleaned.drop(['Metai:'], axis=1, inplace=True)
 df_cleaned['Miestas:'] = df['Adresas'].str.split(',').str[0].str.strip()
 df_cleaned['Rajonas:'] = df['Adresas'].str.split(',').str[1].str.strip()
 df_cleaned.drop(['Adresas'], axis=1, inplace=True)
-
-print(df_cleaned)
