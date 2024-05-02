@@ -1,11 +1,9 @@
-import numpy as np
 import pandas as pd
-from sklearn.model_selection import train_test_split, GridSearchCV, cross_val_score
+from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import LabelEncoder
-from sklearn.pipeline import Pipeline
 import matplotlib.pyplot as plt
 import sqlite3
 
@@ -24,8 +22,7 @@ c.close()
 conn.close()
 
     # Surušiuojame duomenis į kategorinius ir skaitinius kintamuosius
-categorical_features = ['Pastato tipas:', 'Namo tipas:', 'Šildymas:', 'Vanduo:', 'Įrengimas:',
-                        'Pastato energijos suvartojimo klasė:', 'Miestas:']
+categorical_features = ['Įrengimas:','Miestas:']
 numerical_features = ['Plotas:', 'Kambarių sk.:', 'Sklypo plotas:', 'Statybos Metai:']
 
     # Nustatome kodavimo kintamuosius
@@ -33,11 +30,11 @@ encoder = LabelEncoder()
 scaler = StandardScaler()
 
     # Nustatome mūsų duomenys ir tikslą (features, target)
-X = df.drop(['Kaina', 'Rajonas:'], axis=1)
+X = df.drop(['Kaina'], axis=1)
 y = df['Kaina']
 
     # Padaliname duoemnų rinkinį į mokymo ir testavimo dalis
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=42)
 
     # Koduojame kategorinius kintamuosius mokymo ir testavimo rinkiniuose
 X_combined = pd.concat([X_train, X_test])
@@ -67,9 +64,9 @@ print(f"R2: {r2}")
 plt.figure(figsize=(10, 6))
 plt.scatter(y_test, y_pred, color='blue', alpha=0.5, label='Modelio spėjimai')
 plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'r--', lw=2, label='Ideali prognozė')
-plt.title('Santykis tarp tikros ir prognozuotos kainos')
-plt.xlabel('Tikra kaina')
-plt.ylabel('Prognozuota kaina')
+plt.title(f'Santykis tarp tikros ir prognozuotos kainos. R2 = {r2:.2f}')
+plt.xlabel('Tikra kaina, EUR')
+plt.ylabel('Prognozuota kaina, EUR')
 plt.ticklabel_format(style='plain')
 plt.legend()
 plt.show()
