@@ -17,7 +17,7 @@ conn = sqlite3.connect('nt_lt.db')
 c = conn.cursor()
 
     # Pasirenkame visus duomenys iš lentelės
-c.execute("""SELECT * FROM namai_pardavimui_test""")
+c.execute("""SELECT * FROM namai_pardavimui""")
 column_names = [description[0] for description in c.description]
 
     # Sukūriame DF ir uždarome prisijungimą prie DB
