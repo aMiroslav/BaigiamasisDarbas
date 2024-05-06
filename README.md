@@ -141,3 +141,75 @@ Pagrindiniai žingsniai
   taip pat papildomai išsaugomi ir naudoti normalizavimo parametrai.
 
 ![code_20240506_174153_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/975532a1-090e-47f3-8751-01c6adeaf86f)
+
+4. Modelio kūrimas, mokymas ir vertinimas
+Iš viso šiame darbe buvo kuriami trys modeliai: Random Forest Regression, Linear Regresion ir dirbtinių neuroninių
+tinklų Sequential modeliai.
+
+- Random Forest Regression
+  
+Naudojamos technologijos
+
+- Python
+- Scikit-learn: Biblioteka, skirta mašininio mokymosi modelių kūrimui ir duomenų normalizavimui.
+- SQLite3: Integruota duomenų bazė skirta duomenų saugojimui.
+- Pandas: Biblioteka duomenų analizei.
+- Matplotlib ir Seaborn: Grafikų braižymo bibliotekos.
+
+Pagrindiniai žingsniai
+
+- Duomenų nuskaitymas: Nuskaitomi duomenys iš duomenų bazės ir sudaromas DataFrame.
+
+![code_20240506_180503_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/97198476-9840-4878-90c1-0f6a739a4b5c)
+
+- Duomenų dalijimas: Duomenys dalijami į mokymo ir testavimo rinkinius.
+  
+![code_20240506_180530_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/1cc6ef77-cd95-4f84-a945-1064ea758aa1)
+
+- Hiperparametrų nustatymas: Nustatomi Random Forest Regresoriaus hiperparametrai naudojant Grid Search metodą.
+
+  ![code_20240506_180729_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/598c5301-1dfd-4106-a030-d25639751524)
+
+- Modelio mokymas: Modelis yra mokomas su mokymo rinkiniu, naudojant geriausius nustatytus hiperparametrus.
+  
+![code_20240506_180822_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/9664e9ef-8852-4448-81c3-0ca646fe67dd)
+
+- Modelio vertinimas: Modelio veikimas yra įvertinamas naudojant kryžminį patikrinimą ir testavimo rinkinį.
+
+![code_20240506_180913_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/43c7019d-e914-4583-967f-8d3eccffe7d3)
+
+- Rezultatų vizualizavimas: Modelio spėjimų ir realių kainų koreliacija yra vizualizuojama.
+
+  ![code_20240506_181003_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/4a587f97-a278-4c03-8b42-0263d1ec8514)
+  ![image](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/e7e3fbd3-3152-4313-ba0a-752d7f9617d7)
+
+Papildomai, bus atvaizduojama savybių svarba aspkaičiuojant prognozuojamą kainą. Kadangi duomenys yra koduoti, 
+turime juos sugrupuoti į motinines kategorijas. Tam tisklui padaromas žodynas grupavimui.
+
+![code_20240506_181208_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/b17953ed-9860-485c-a416-0b68819276dc)
+
+Tada suskaičiuojama rodiklių svarba
+
+![code_20240506_192114_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/62d67429-8ae3-4815-af42-1aaca1463171)
+
+Ir pateikiami rezultatai.
+
+![code_20240506_192246_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/49b0486a-095b-4323-b24a-0247b891b6f3)
+
+![image](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/f0cf0945-b5ed-4922-be03-1d907105763b)
+
+Išvados:
+Pateiktas grafikas nurodo santyki tarp modelio prognozuotų ir realių kainų. Kiekvienas taškelis reprezentuoja
+vieną turto vienetą. Raudona įstriža linija demonstruoja idealią teorinę prognozę (mūsų siekiamybę).
+Taškų atstumas iki linijos norodo paklaidos dydį mūsų spėjimuose.
+
+Iš grafiko galima spręsti, kad modelis veikia geriau, prognazuojant pigesnio turto kainas.
+Kai kurie taškai, reprezentuojantys labai išsiskiriančius savo kaina, turto vienetus yra labai nutolę nuo 
+idealios linijos. Tai reiškia, kad modelis nesugeba deramai įvertini iškirtinio (pagal tam tikras savo savybes)
+turto kainos.    
+
+Apibendrinant, galima pasakyti, kad modelis "pagauna" bendrą tendenciją, bet jam yra sunku įvertinti 
+kažkuo išskirtinius, ypatingai ženkliai nuo kitų brangesnius turto vienetus. 
+
+
+
