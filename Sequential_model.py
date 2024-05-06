@@ -51,7 +51,8 @@ early_stopping = EarlyStopping(monitor='val_loss', patience=10, restore_best_wei
 
     # Kompiliuojame modelį
 model.compile(optimizer='adam', loss='mae')
-model.fit(x=X_train, y=y_train.values, validation_data=(X_test, y_test.values), batch_size=256, epochs=400, callbacks=[early_stopping])
+model.fit(x=X_train, y=y_train.values, validation_data=(X_test, y_test.values), batch_size=256, epochs=400,
+          callbacks=[early_stopping])
 
     # Apskaičiuojame ir vizualizuojame modelio mokymo nuostolius
 loss = pd.DataFrame(model.history.history)
@@ -89,3 +90,17 @@ plt.show()
     # Išsaugome modelį
 model.save('price_prediction_sequential.keras')
 print("Modelio konfigūracija išsaugota")
+
+    # Išvados
+"""
+Apibendrinant šio modelio veikimą, matome, kad rezultatas yra labai panašus į gautą
+naudojant Random Forest regresijos modelį. Tiek grafikai, tiek rodikliai yra labai 
+panašūs. Tiesa šis modelis parodė minimaliai geresnį rezultatą, ko pasekoje galime gauti
+šiek tiek tikslesnį spėjimą. Šis modelis (kaip ir kiti, anksčiau apžvelgti), geriau prognozuoja pigesnės ir 
+vidutinės klasės namų kainas, sunkiai sekasi su brangesnio turto vertinimu.
+
+Tačiau įvertinant nekilnojamojo turto rinkos specifiką, galima teigti, jog prabangių 
+NT vienetų kainai didžiausią įtaką turi veiksniai, kurie nėra skaitiškai įvardinti tarp požymių,
+randamų mūsų duomenų rinkinyje. Tai gali būti ypatinga vieta mieste ar kokios nors kitos unikalios
+savybės, realybėje nulemiančios ženkliai aukštesnę kainą. Tokie dalykai, savo ruožtu, nėra vertinami mūsų modelių.
+Šios objektyvios priežastys nulemia galutinį pateiktų skaičiavimų rezultatų tiklsumą."""
