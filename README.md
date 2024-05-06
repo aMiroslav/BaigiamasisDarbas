@@ -330,9 +330,47 @@ Naudojamos technologijos
 
 - Python
 - Flask: Python web aplikacijų karkasas.
-- TensorFlow: Atviro kodo gilus mokymasis.
+- TensorFlow: Giliojo mokymosi įrankių biblioteka.
 - Scikit-learn: Biblioteka modelių vertinimui.
-- SQLite3: Integruota duomenų bazė skirta saugoti duomenims.
-- Pandas: Biblioteka duomenų manipuliavimui ir analizei.
+- SQLite3: Integruota duomenų bazė skirta duomenims saugoti.
+- Pandas: Biblioteka duomenų analizei.
+- NumPy:
 - Matplotlib ir Seaborn: Bibliotekos vizualizacijai.
+
+Pagrindiniai žingsniai
+
+- Duomenų užkrovimas: Užkraunami išsaugoti modelis ir normalizacijos skalė.
+
+![code_20240506_215649_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/c215b66c-a9e3-4214-b54e-3c4d9bee9d78)
+
+- Vartotojo sąsaja: Sukuriama vartotojo sąsaja, kurioje vartotojas gali įvesti namo charakteristikas.
+
+![code_20240506_215743_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/722c33f3-346f-4ee4-be5e-a5b86d11c2e4)
+
+- Duomenų apdorojimas: Įvesti duomenys koduojami ir normalizuojami, kad būtų galima juos naudoti modelyje.
+
+![code_20240506_223311_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/1afb18e2-b1ac-4dea-90fe-3d18b6a4dfb4)
+
+- Prognozavimas: Prognozuojama namo kaina pagal įvestus duomenis. Ir prognozes išvedame naujame lange, kartu nurodant
+  ir to paties miesto vidutinę namų kainą, bei vidutinę kainą už kvadratinį metrą, kad vartotjas galėtų palyginti,
+  kaip jo įvestos reikšmes daro įtaką galutinei prognozuotai kainai, lyginant su vidurkiu. Kartu atvaizduojami
+  pasirinkti parametrai
+  
+![code_20240506_223613_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/b82f14ff-eb60-4ea4-b189-e18429b304bc)
+
+
+- Statistika: Vartotojas gali peržiūrėti statistinius duomenis apie nekilnojamąjį turtą iš naudojamo duomenų rinkinio.
+  Statistiniai duomenys išvedami naujame lape, pateikia grafikus apie vidutinę kvadratinio metro kainą, vidutinį namų dydį bei vidutinį
+  sklypo dydi.
+
+  ![code_20240506_223901_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/c7e0126b-c353-4922-969b-ba01219ff06f)
+
+Siekiant neapsunkinti kodo, statistiniai rodiklai yra skaičiuojami atskirame faile: Statisne_analize.py
+
+Pagrindiniai failai, užtikrinantys Flask aplikacijos veikimą:
+
+- index.html: Pagrindinis puslapis, kuriame vartotojas įveda duomenis.
+- result.html: Puslapis, kuriame pateikiama prognozuojama kaina.
+- statistics.html: Puslapis, kuriame vartotojas gali peržiūrėti statistinius duomenis.
+- error.html: Puslapis, kuriame rodomas klaidos pranešimas, jei įvyksta klaida vykdant prognozę.
  
