@@ -87,5 +87,5 @@ plt.legend()
 plt.show()
 
     # Išsaugome modelį
-model.save('price_prediction_sequential_test.keras')
+model.save('price_prediction_sequential.keras')
 print("Modelio konfigūracija išsaugota")
