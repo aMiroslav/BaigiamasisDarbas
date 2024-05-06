@@ -226,11 +226,7 @@ Pagrindiniai žingsniai
 
 - Duomenų nuskaitymas: Nuskaitomi duomenys iš duomenų bazės ir sudaromas DataFrame.
 
-![code_20240506_193007_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/bc8e3504-7ece-4707-9c54-abedd7792b3e)
-
 - Duomenų dalijimas: Duomenys dalijami į mokymo ir testavimo rinkinius.
-- 
-![code_20240506_193040_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/a2d6116e-3286-4c63-b047-6cf104862b1a)
 
 - Modelio sukurimas: Sukuriamas tiesinės regresijos modelis ir yra yra mokomas naudojant mokymo rinkinį
 
@@ -253,3 +249,62 @@ turtą, bet sunkiau yra su brangesniu turtu. Matome, kad tokios prognozės yra n
 
 ![Screenshot 2024-05-06 at 19 39 12](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/4a11b7c8-2aa4-4f54-963e-d21e96bfdeef)
 
+- Sequential
+
+Šis modelis yra sukurtas naudojant giliojo mokymosi techniką ir apmokomas naudojant tuos pačius
+mokymo ir testavimo duomenų rinkinius.
+
+Naudojamos technologijos
+
+- Python
+- TensorFlow: Giliojo mokymosi įrankių biblioteka.
+- Scikit-learn: Biblioteka modelių vertinimui.
+- SQLite3: Integruota duomenų bazė skirta duomenims saugoti.
+- Pandas: Biblioteka duomenų  analizei.
+- Matplotlib ir Seaborn: Bibliotekos vizualizacijai.
+
+Pagrindiniai žingsniai
+
+- Duomenų nuskaitymas: Duomenys yra nuskaitomi iš duomenų bazės ir sudaromas DataFrame.
+- Duomenų dalijimas: Duomenys yra padalinami į mokymo ir testavimo rinkinius.
+  Pirmieji du žingsniai analogiški prieš tai aprašytuose modeliuose
+- Modelio kūrimas: Sukuriamas tiesinio regresijos modelis naudojant gilųjį mokymąsi.
+- 
+![code_20240506_210747_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/f9e8b6a8-274e-4a2b-be11-19ef2c0caae9)
+  
+- Modelio mokymas: Modelis yra mokomas su mokymo rinkiniu.
+- 
+![code_20240506_210845_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/5a27470d-efa9-4d29-9661-0218c4f92fdc)
+
+- Modelio vertinimas: Modelio veikimas yra įvertinamas naudojant testavimo rinkinį.
+
+  ![code_20240506_210919_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/f87d443d-1062-4f70-939b-458b72ae7ca9)
+
+- Rezultatų vizualizavimas: Modelio spėjimų ir realių kainų koreliacija yra vizualizuojama.
+  
+![code_20240506_211223_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/f6748fa0-a01b-4b54-8cf3-e28dccc8d942)
+
+![image](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/68f8a685-0f52-40d2-9854-aeb725161790)
+
+![Screenshot 2024-05-06 at 21 33 38](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/55f4fdd2-5a09-4218-8e58-c1d3a100f5cc)
+
+- Taip pat vizualizuojame mokymosi proceso nuostolių kreivė. Šis grafikas parodo, kad mokymo procesas vyksta 
+sklandžiai, ir gaunamas tolygus rezultatas.
+
+![code_20240506_210957_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/3fdfeb95-c109-4d50-8eb3-928cc062f1b9)
+
+![image](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/8bb88842-86a5-4e82-99dd-7103fb8c04b5)
+
+Išvados
+Apibendrinant šio modelio veikimą, matome, kad rezultatas yra labai panašus į gautą
+naudojant Random Forest regresijos modelį. Tiek grafikai, tiek rodikliai yra labai 
+panašūs. Tiesa šis modelis parodė minimaliai geresnį rezultatą, ko pasekoje galime gauti
+šiek tiek tikslesnį spėjimą. Šis modelis (kaip ir kiti, anksčiau apžvelgti), geriau prognozuoja pigesnės ir 
+vidutinės klasės namų kainas, sunkiai sekasi su brangesnio turto vertinimu.
+
+Tačiau įvertinant nekilnojamojo turto rinkos specifiką, galima teigti, jog prabangių 
+NT vienetų kainai didžiausią įtaką turi veiksniai, kurie nėra skaitiškai įvardinti tarp požymių,
+randamų mūsų duomenų rinkinyje. Tai gali būti ypatinga vieta mieste ar kokios nors kitos unikalios
+savybės, realybėje nulemiančios ženkliai aukštesnę kainą. Tokie dalykai, savo ruožtu, nėra vertinami mūsų modelių.
+Šios objektyvios priežastys nulemia galutinį pateiktų skaičiavimų rezultatų tiklsumą.
+ 
