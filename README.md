@@ -82,9 +82,13 @@ Nauodojamos funkcijos:
 -'cleen_cell_to_number' - funkcija, skirta pašalinti nereikalingus ženklus iš duomenų langelių, kadangi
   iš puslapio gauti duomenis turi mums nereikalingų simbolių. Taip pat ',' skaičiuose keičiami į '.'.
 
+![code_20240506_172734_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/af21db66-aaf0-4e3c-9146-978984890b3f)
+
 
 - 'remove_extreme_values' - funkcija, skirta pašalinti ribinėms reikšmės (minimalioms ir maksimalioms), 
   kurios gali turėti įtakos modelio tiklsumui
+
+![code_20240506_172809_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/b9f5cf46-6a02-4bb3-873a-4300fd9e07b6)
 
 
 - 'calculate_room_count' - funkcija, skirta užpildyti tuštiems laukeliams, stulpelyje 'Kambarių sk.'.
@@ -93,22 +97,47 @@ Nauodojamos funkcijos:
   duomenimis iš pradžių apskaičiuotas vidutinis vieno kambario plotas. Tad tusčios vietos užpildytos
   suapvalinta verte, gauta padalinus namo plotą iš vidutinio kambario ploto
 
+![code_20240506_173313_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/92fff7bc-3f21-46bd-88d8-1edf37d47358)
+![code_20240506_172834_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/d9ab93a6-a7da-45d2-abd2-c8fc58ef126a)
 
 
 Pagrindiniai žingsniai
 
 - Duomenų nuskaitymas: nuskaitomi duomenys iš CSV failų, sukurtų duomenų gavybos metu ir sukūriami 
   DF objektai, kurie galiausiai yra sujungiamį į vieną.
-
+  
+![code_20240506_172927_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/96728763-9df8-4bd1-9a52-952a135eb097)
 
 - Duomenų valymas ir transformavimas: pašalinami nereikalingi simboliai ir ribinės kainų reikšmės. 
-  Taip pat pašalinami dublikatai ir stulpeliai, kurie nebus naudojami tolimesnėje analizėje
+  Taip pat pašalinami dublikatai ir stulpeliai, kurie nebus naudojami tolimesnėje analizėje.
+  Skaitinės reikkšmės konvertuojamos į saičius. Užpildomos trūkstamos vertės.
+  
+![code_20240506_173110_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/a615be74-c5b4-4e54-aa63-09ccba62f20e)
 
+- Statybos metų stulpelis turėjoeilutes, kuriose buvo nurodyta daugiau nei viena data ir papildomas tekstas.
+  Pasirinkome pirmą datą, tekstą pašalinome
+
+![code_20240506_173607_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/39695abf-28b3-4abf-92dc-9de3f1eb3b91)
+
+- Iš adreso stulpelio išgavome tik miestą (arbą rajoną) ir suvienodinome pavadinimus
+
+  ![code_20240506_173716_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/9bdb5a16-9374-4088-8dcc-bcd616495f87)
+
+- Kai kurie kategoriniai atribūtai (Šildymo tipas, Vanduo) turėjo daug unikalių kategorijų, arba pasikartojimų,
+  tad buvo nuspręsta palikti tik pirmu pasirinkimu įrašytą opciją
+
+![code_20240506_173958_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/986d56ec-53e8-4cda-bf98-0e1849f97d7e)
+
+- Patikriname ar duomenų rinkinyje neliko tuščių reikšmių.
+
+![code_20240506_173438_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/11743daf-a809-4cf9-aa15-5360c7387db6)
 
 - Duomenų kodavimas ir normalizavimas: Kategoriniai kintamieji yra koduojami naudojant One-Hot Encoder'į, 
   o skaitiniai kintamieji yra normalizuojami naudojant Min-Max Scaler'į.
 
+  ![code_20240506_174057_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/3d8f71fa-2051-4b9d-ac59-7d12a7b5e78c)
 
 - Duomenų išsaugojimas: Koduoti ir normalizuoti duomenys yra išsaugomi duomenų bazėje, 
   taip pat papildomai išsaugomi ir naudoti normalizavimo parametrai.
 
+![code_20240506_174153_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/975532a1-090e-47f3-8751-01c6adeaf86f)
