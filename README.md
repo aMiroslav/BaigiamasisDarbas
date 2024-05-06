@@ -110,11 +110,11 @@ Pagrindiniai žingsniai
 
 - Duomenų valymas ir transformavimas: pašalinami nereikalingi simboliai ir ribinės kainų reikšmės. 
   Taip pat pašalinami dublikatai ir stulpeliai, kurie nebus naudojami tolimesnėje analizėje.
-  Skaitinės reikkšmės konvertuojamos į saičius. Užpildomos trūkstamos vertės.
+  Skaitinės reikšmės konvertuojamos į skaičius. Užpildomos trūkstamos vertės.
   
 ![code_20240506_173110_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/a615be74-c5b4-4e54-aa63-09ccba62f20e)
 
-- Statybos metų stulpelis turėjoeilutes, kuriose buvo nurodyta daugiau nei viena data ir papildomas tekstas.
+- Statybos metų stulpelis turėjo eilutes, kuriose buvo nurodyta daugiau nei viena data ir papildomas tekstas.
   Pasirinkome pirmą datą, tekstą pašalinome
 
 ![code_20240506_173607_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/39695abf-28b3-4abf-92dc-9de3f1eb3b91)
