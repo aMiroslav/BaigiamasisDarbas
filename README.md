@@ -35,10 +35,11 @@ Naudotos funkcijos:
 accept_cookies() - funkcija skirta paspausti slapukų sutikimo mygtukui. Funkcija iškviečiama 
 pagrindinėje funkcijoje, kad būtų galima uždaryti slapukų sutikimo langą norint atlikti kitas 
 operacijas puslapyje. 
-![code_20240506_164746_via_10015_io.png](..%2F..%2FDownloads%2Fcode_20240506_164746_via_10015_io.png)
+![code_20240506_164746_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/74aea71a-7604-46d6-bf4b-2af2b9f2fc7c)
+
 
 scrape_page_data(link) - funkcija skirta išgauti duomenims apie vieną nekilnojamojo turto objektą.
 Iškviečiama pagrindinėje funkcijoje ir iteruojamą per kiekvieną atverčiamą puslpapį. 
 Funkcija naudoja parametrą 'link' - puslpaio, iš kurio bus išgaunami duomenis, URL.
 Funkcija gražiną 'page_data', žodyną, kuriame saugomi duomenys apie vieno NT objekto atributus
-![code_20240506_165336_via_10015_io.png](..%2F..%2FDownloads%2Fcode_20240506_165336_via_10015_io.png)
+![code_20240506_165336_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/1204ea94-e088-44f5-b5a8-0ec9846772ff)
