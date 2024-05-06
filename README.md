@@ -307,4 +307,32 @@ NT vienetų kainai didžiausią įtaką turi veiksniai, kurie nėra skaitiškai 
 randamų mūsų duomenų rinkinyje. Tai gali būti ypatinga vieta mieste ar kokios nors kitos unikalios
 savybės, realybėje nulemiančios ženkliai aukštesnę kainą. Tokie dalykai, savo ruožtu, nėra vertinami mūsų modelių.
 Šios objektyvios priežastys nulemia galutinį pateiktų skaičiavimų rezultatų tiklsumą.
+
+5. Prognozių generavimas
+
+Prognozės bus generuojamos išsagojus geriausius tikslumo rodiklius pasiekusio modelio konfigūraciją (Sequential).
+R2 rodiklis = 0.60, Vidutinė absoliuti paklaida = 60532.59. Tai reiškia, kad modelio suprognozuota kaina gali turėti
+apie 60 tūkstančių eur. paklaidą.
+
+Duomenys skaičiavimams pateiks vartotojai per interaktyvią sąsają. Tam, kad galėtų būti atlikti tisklūs skaičiavimai, 
+pateiktus duomenys reikės apdoroti taip pat, kaip ir mūsų mokymui naudotą duomenų rinkinį. Tam tisklui ir buvo išsaugota
+MinMax Scaler konfigūracija. 
+
+Interaktyviai sąsajai sukurti naudosime Python web aplikacijų kurimo karkasą Flask. Taip vartotojai galės suvesti duomenys, 
+matyti gautus rezultatus, ir susipažinti su tam tikrais statistiniais rodikliais.
+
+6. Vizualinis pateikimas
+
+Kaip ir aprašyta aukščiau, rezultatų ir skaičiavimų pateikimui bus naudojamas Flask. Šio įrankio pagalba
+sukurta paprasta WEB aplikacija, sukuriančia paprastą sąsają informacijai vartotojui pateikti.
+
+Naudojamos technologijos
+
+- Python
+- Flask: Python web aplikacijų karkasas.
+- TensorFlow: Atviro kodo gilus mokymasis.
+- Scikit-learn: Biblioteka modelių vertinimui.
+- SQLite3: Integruota duomenų bazė skirta saugoti duomenims.
+- Pandas: Biblioteka duomenų manipuliavimui ir analizei.
+- Matplotlib ir Seaborn: Bibliotekos vizualizacijai.
  
