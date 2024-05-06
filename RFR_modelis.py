@@ -78,7 +78,7 @@ plt.legend()
 plt.show()
 
     # Skaičiuojame rodiklių svarbą galutiniam modelio sprendimui
-    # SUkuriame žodyna, kodotiems stulpeliams sujungti
+    # Sukuriame žodyna, kodotiems stulpeliams sujungti
 cat_features = {
     'Miestas:': ['Miestas:_Alytaus r.', 'Miestas:_Alytus','Miestas:_Kaunas', 'Miestas:_Kauno r.', 'Miestas:_Klaipėda',
                  'Miestas:_Klaipėdos r.', 'Miestas:_Panevėžio r.',  'Miestas:_Panevėžys',
