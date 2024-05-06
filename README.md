@@ -212,4 +212,44 @@ Apibendrinant, galima pasakyti, kad modelis "pagauna" bendrą tendenciją, bet j
 kažkuo išskirtinius, ypatingai ženkliai nuo kitų brangesnius turto vienetus. 
 
 
+- Linear Regression
+
+Naudojamos technologijos
+
+- Python
+- Pandas: Biblioteka duomenų analizei.
+- Scikit-learn: Biblioteka, skirta mašininio mokymosi modelių kūrimui ir duomenų normalizavimui.
+- SQLite3: Integruota duomenų bazė skirta duomenų saugojimui.
+- Matplotlib: Biblioteka grafikų braižymui.
+
+Pagrindiniai žingsniai
+
+- Duomenų nuskaitymas: Nuskaitomi duomenys iš duomenų bazės ir sudaromas DataFrame.
+
+![code_20240506_193007_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/bc8e3504-7ece-4707-9c54-abedd7792b3e)
+
+- Duomenų dalijimas: Duomenys dalijami į mokymo ir testavimo rinkinius.
+- 
+![code_20240506_193040_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/a2d6116e-3286-4c63-b047-6cf104862b1a)
+
+- Modelio sukurimas: Sukuriamas tiesinės regresijos modelis ir yra yra mokomas naudojant mokymo rinkinį
+
+![code_20240506_193112_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/c72ee9c2-48ba-4e45-83b9-850e87ff237b)
+
+- Modelio vertinimas: Modelio veikimas yra įvertinamas naudojant testavimo rinkinį.
+
+![code_20240506_193222_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/f77d167e-0a3d-433f-be5a-9aba8d1c7cea)
+
+- Rezultatų vizualizavimas: Modelio spėjimų ir realių kainų koreliacija yra vizualizuojama grafike.
+
+![code_20240506_193256_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/52d1e4ce-266d-4d70-a41d-78c6fd59cd2a)
+![image](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/368e0a4b-41e7-4784-89cc-8c31bdb09d3b)
+
+Išvados
+Įveritnus gautą grafiką, ir modelio veikimo rodiklių rezultatus, galima daryti išvadas, kad
+modelis duoda panašų, bet kiek prastesnį rezultatą, nei Random Forest Regresssion modelis.
+Bendra tendencija yra pagaunama, modeliui sekasi neblogai prognozuoti žemėsnės kainos ir standartinį 
+turtą, bet sunkiau yra su brangesniu turtu. Matome, kad tokios prognozės yra netikslios. 
+
+![Screenshot 2024-05-06 at 19 39 12](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/4a11b7c8-2aa4-4f54-963e-d21e96bfdeef)
 
