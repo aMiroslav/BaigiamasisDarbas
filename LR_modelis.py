@@ -47,3 +47,10 @@ plt.ylabel('Prognozuota kaina, EUR')
 plt.ticklabel_format(style='plain')
 plt.legend()
 plt.show()
+
+    # Išvados
+"""  
+Įveritnus gautą grafiką, ir modelio veikimo rodiklių rezultatus, galima daryti išvadas, kad
+modelis duoda panašų, bet kiek prastesnį rezultatą, nei Random Forest Regresssion modelis.
+Bendra tendencija yra pagaunama, modeliui sekasi neblogai prognozuoti žemėsnės kainos ir standartinį 
+turtą, bet sunkiau yra su brangesniu turtu. Matome, kad tokios prognozės yra netikslios. """
