@@ -1,6 +1,8 @@
 import sqlite3
+import joblib
 import pandas as pd
 import re
+from sklearn.preprocessing import OneHotEncoder, MinMaxScaler
 
 
     # Importuojame duomenis nuskaitydami anksčiau paruoštus CSV failus
@@ -50,9 +52,15 @@ print('Besidubliuojančios reokšmės pašalintos.')
 df_cleaned = df_no_duplicates.drop(['Artimiausias vandens telkinys:', 'Iki vandens telkinio (m):', 'Ypatybės:',
                                     'Papildomos patalpos:', 'Papildoma įranga:', 'Apsauga:', 'Reklama:',
                                     'Reklama/pasiūlymas:', 'Namo numeris:', 'Aukštų sk.:',
-                                    'Unikalus daikto numeris(RC numeris):', 'Pastato energijos suvartojimo klasė:',
-                                    'Vanduo:', 'Šildymas:', 'Namo tipas:', 'Pastato tipas:'], axis=1)
+                                    'Unikalus daikto numeris(RC numeris):'], axis=1)
 print('Pašalinti analizėje nenaudojami stulpeliai.')
+
+
+        # Kategoriniuose stulpeliuose, kuriuose trūksta verčių, įvedame naują kategoriją apie nepateiktus duomenys
+df_cleaned.fillna({'Pastato energijos suvartojimo klasė:': 'nepateikta'}, inplace=True)
+df_cleaned.fillna({'Vanduo:': 'nepateikta'}, inplace=True)
+df_cleaned.fillna({'Šildymas:': 'nepateikta'}, inplace=True)
+print('Sutvarkytos trūkstamos reikšmės.')
 
     # Pritaikome funkciją ir konvertuojame duomenys į skaičius pasirinktuose stulpeliuose
 
@@ -109,10 +117,50 @@ df_cleaned['Miestas:'] = df_cleaned['Miestas:'].replace('Panevėžio r. sav.', '
 df_cleaned['Miestas:'] = df_cleaned['Miestas:'].replace('Šiaulių r. sav.', 'Šiaulių r.')
 df_cleaned['Miestas:'] = df_cleaned['Miestas:'].replace('Alytaus r. sav.', 'Alytaus r.')
 
+    # Sutvarkome kategorinių kintamųjų reikšmes 'Šildymas:' stulpelyje
+df_cleaned['Šildymas:'] = df_cleaned['Šildymas:'].str.split(',').str[0]
+print("Sutvarkytas stulpelis 'Šildymas:'. Paliktos tik pirmu pasirinkimu įrašytos reikšmės.")
+
+
+    # Sutvarkome kategorinių kintamųjų reikšmes 'Vanduo' stulpelyje
+df_cleaned['Vanduo:'] = df_cleaned['Vanduo:'].str.split(',').str[0]
+print("Sutvarkytas stulpelis 'Vanduo:'. Paliktos tik pirmu pasirinkimu įrašytos reikšmės.")
+
+    # Koduojame ir narmalizuojame duomenys
+encoder = OneHotEncoder(sparse_output=False)
+encoder.fit(df_cleaned[['Miestas:', 'Įrengimas:', 'Namo tipas:', 'Vanduo:', 'Šildymas:',
+                        'Pastato energijos suvartojimo klasė:', 'Pastato tipas:']])
+categorical_features = encoder.transform(df_cleaned[['Miestas:', 'Įrengimas:', 'Namo tipas:', 'Vanduo:', 'Šildymas:',
+                                                     'Pastato energijos suvartojimo klasė:', 'Pastato tipas:']])
+print(categorical_features.shape)
+feature_names = encoder.get_feature_names_out()
+print(len(feature_names))
+categorical_features_df = pd.DataFrame(categorical_features, columns=feature_names)
+
+categorical_features_df.reset_index(drop=True, inplace=True)
+df_final = pd.concat([df_cleaned.drop(['Miestas:', 'Įrengimas:', 'Namo tipas:', 'Vanduo:', 'Šildymas:',
+                                       'Pastato energijos suvartojimo klasė:', 'Pastato tipas:'],
+                                      axis=1), categorical_features_df], axis=1)
+
+scaler = MinMaxScaler()
+X_temp = df_final.drop('Kaina', axis=1)
+X = scaler.fit_transform(X_temp)
+y = df_final['Kaina']
+
+df_scaled = pd.DataFrame(X, columns=X_temp.columns)
+df_scaled['Kaina'] = y
+
+    # Išsaugome MinMaxScaler parametrus, kuriuos naudosime koduojant duomenis prognozėms
+joblib.dump(scaler, 'minmax_scaler.pkl')
+
 
     #Sutvarkytų duomenų išsaugojimas duomenų bazėje
 conn = sqlite3.connect('nt_lt.db')
 c = conn.cursor()
 
-df_cleaned.to_sql('namai_pardavimui', conn, if_exists='replace', index=False)
+df_scaled.to_sql('namai_pardavimui', conn, if_exists='replace', index=False)
 print('Duomenys išsaugoti duomenų bazėje.')
+print(df_cleaned.columns)
+
+c.close()
+conn.close()
