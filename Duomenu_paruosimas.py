@@ -159,8 +159,8 @@ conn = sqlite3.connect('nt_lt.db')
 c = conn.cursor()
 
 df_scaled.to_sql('namai_pardavimui', conn, if_exists='replace', index=False)
+df_cleaned.to_sql('namai_pardavimui_not_scaled', conn, if_exists='replace', index=False)
 print('Duomenys išsaugoti duomenų bazėje.')
-print(df_cleaned.columns)
 
 c.close()
 conn.close()
