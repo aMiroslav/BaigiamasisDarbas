@@ -6,7 +6,7 @@ Prejektas sudarytas iš kelių dalių:
 
 1. Įvadas
 2. Duomenų surinkimas 
-3. Duomenų apdorojimas 
+3. Duomenų paruošimas ir apdorojimas 
 4. Modelio kūrimas, mokymas ir vertinimas 
 5. Prognozių generavimas 
 6. Vizualinis pateikimas 
@@ -32,21 +32,21 @@ Naudotos technologijos:
 
 Naudotos funkcijos:
 
-accept_cookies() - funkcija skirta paspausti slapukų sutikimo mygtukui. Funkcija iškviečiama 
+'accept_cookies()' - funkcija skirta paspausti slapukų sutikimo mygtukui. Funkcija iškviečiama 
 pagrindinėje funkcijoje, kad būtų galima uždaryti slapukų sutikimo langą norint atlikti kitas 
 operacijas puslapyje. 
 
 ![code_20240506_164746_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/74aea71a-7604-46d6-bf4b-2af2b9f2fc7c)
 
 
-scrape_page_data(link) - funkcija skirta išgauti duomenims apie vieną nekilnojamojo turto objektą.
+'scrape_page_data(link)' - funkcija skirta išgauti duomenims apie vieną nekilnojamojo turto objektą.
 Iškviečiama pagrindinėje funkcijoje ir iteruojamą per kiekvieną atverčiamą puslapį. 
 Funkcija naudoja parametrą 'link' - puslpaio, iš kurio bus išgaunami duomenis, URL.
 Funkcija gražiną 'page_data', žodyną, kuriame saugomi duomenys apie vieno NT objekto atributus
 
 ![code_20240506_165336_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/1204ea94-e088-44f5-b5a8-0ec9846772ff)
 
-scrape_and_save(start_page, end_page) - funkcija, skirta nuorodų, apie kiekvieną NT objoktą išgavimui, 
+'scrape_and_save(start_page, end_page)' - funkcija, skirta nuorodų, apie kiekvieną NT objoktą išgavimui, 
 duomenų išsaugojimui CSV formatu, iteruojant per visus puslapius iš atitinkamų skelbimų filtro
 kategorijos. Funkcija iškviečiama kaip pagrindinė funkcija, kad būtų pradėtas duomenų išgavimo procesas.
 Naudojami parametrai:     'start_page' - pradinis puslapio numeris, nuo kurio 
@@ -62,4 +62,53 @@ duomenų gavyba ir galiausiai duomenys išsaugomi.
 Šis procesas atliekamas atskirai kiekvienam miestui (įtraukus ir rajoną). Kiekvienam miestui yra 
 paruoštas atitinkamas kodas, su konkrečia pradine nuorodą, galutinio failo pavadinimu ir
 galutinio puslapio skaičiumi
+
+
+3. Duomenų paruošimas ir apdorojimas
+Prieš atliekant tolimesnius žingsniu, gautus duomenis svarbu tinkamai paruošti. Šis procesas
+apima duomenų nuskaitymą iš CSV failų, duomenų valymą, transformavimą ir kodavimą bei galutinių 
+duomenų išsaugojimą duomenų bazėje.
+
+Naudojamos technologijos
+
+- Python
+- SQLite3: Integruota duomenų bazė skirta duomenų saugojimui.
+- Pandas: Biblioteka duomenų analizei.
+- Regular Expressions (re): Python modulis teksto šablonų atpažinimui.
+- Scikit-learn: Biblioteka, skirta mašininio mokymosi modelių kūrimui ir duomenų normalizavimui.
+
+Nauodojamos funkcijos:
+
+-'cleen_cell_to_number' - funkcija, skirta pašalinti nereikalingus ženklus iš duomenų langelių, kadangi
+  iš puslapio gauti duomenis turi mums nereikalingų simbolių. Taip pat ',' skaičiuose keičiami į '.'.
+
+
+- 'remove_extreme_values' - funkcija, skirta pašalinti ribinėms reikšmės (minimalioms ir maksimalioms), 
+  kurios gali turėti įtakos modelio tiklsumui
+
+
+- 'calculate_room_count' - funkcija, skirta užpildyti tuštiems laukeliams, stulpelyje 'Kambarių sk.'.
+  Šis stulpelis turėjo daug tuščių reikšmių, tad jo užpildymas vidutiniu kambarių skaičiaus dydžiu
+  galėtų turėti neigiamos įtakos modelio tikslumui. Buvo pasirinktas kitas būdas: remiantis turimais
+  duomenimis iš pradžių apskaičiuotas vidutinis vieno kambario plotas. Tad tusčios vietos užpildytos
+  suapvalinta verte, gauta padalinus namo plotą iš vidutinio kambario ploto
+
+
+
+Pagrindiniai žingsniai
+
+- Duomenų nuskaitymas: nuskaitomi duomenys iš CSV failų, sukurtų duomenų gavybos metu ir sukūriami 
+  DF objektai, kurie galiausiai yra sujungiamį į vieną.
+
+
+- Duomenų valymas ir transformavimas: pašalinami nereikalingi simboliai ir ribinės kainų reikšmės. 
+  Taip pat pašalinami dublikatai ir stulpeliai, kurie nebus naudojami tolimesnėje analizėje
+
+
+- Duomenų kodavimas ir normalizavimas: Kategoriniai kintamieji yra koduojami naudojant One-Hot Encoder'į, 
+  o skaitiniai kintamieji yra normalizuojami naudojant Min-Max Scaler'į.
+
+
+- Duomenų išsaugojimas: Koduoti ir normalizuoti duomenys yra išsaugomi duomenų bazėje, 
+  taip pat papildomai išsaugomi ir naudoti normalizavimo parametrai.
 
