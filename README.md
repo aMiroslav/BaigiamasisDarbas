@@ -1,4 +1,4 @@
-Darbo pavadinimas: NT kainų prognozavimo sistema
+# Darbo pavadinimas: NT kainų prognozavimo sistema
 
 Projektas skirtas namų kainų prognozavimui, remiantis įvairiomis savybėmis.
 
@@ -12,7 +12,7 @@ V. Prognozių generavimas
 VI. Vizualinis pateikimas 
 VII. Išvados
 
-I. Įvadas
+## I. Įvadas
 Projektas buvo orientuotas į Lietuvos rinką, tad projektui buvo pasirinkta analizuoti
 nekilnojomojo turto, o kenkrečiau namų kainas Lietuvoje. Buvo orientuojamasi į didžiausius 
 miestus, tad objektu buvo pasirinkti: Vilnius, Kaunas, Klaipėda, Šiauliai, Panevėžys ir 
@@ -22,9 +22,9 @@ aruodas.lt.
 
 
 
-II. Duomenų rinkimas
+## II. Duomenų rinkimas
 
-Naudotos technologijos:
+### Naudotos technologijos:
 
 - Python
 - BeautifulSoup: Biblioteka skirta analizuoti HTML ir XML dokumentus.
@@ -32,7 +32,7 @@ Naudotos technologijos:
 - WebDriver Manager: Įrankis, skirtas valdyti interneto draiverius.
 - Pandas: Biblioteka duomenų analizei.
 
-Naudotos funkcijos:
+### Naudotos funkcijos:
 
 'accept_cookies()' - funkcija skirta paspausti slapukų sutikimo mygtukui. Funkcija iškviečiama 
 pagrindinėje funkcijoje, kad būtų galima uždaryti slapukų sutikimo langą norint atlikti kitas 
@@ -69,13 +69,13 @@ Rezultate buvo gauti tokio pavyzdžio CSV failai:
 
 
 
-III. Duomenų paruošimas ir apdorojimas
+## III. Duomenų paruošimas ir apdorojimas
 
 Prieš atliekant tolimesnius žingsniu, gautus duomenis svarbu tinkamai paruošti. Šis procesas
 apima duomenų nuskaitymą iš CSV failų, duomenų valymą, transformavimą ir kodavimą bei galutinių 
 duomenų išsaugojimą duomenų bazėje.
 
-Naudojamos technologijos
+### Naudojamos technologijos
 
 - Python
 - SQLite3: Integruota duomenų bazė skirta duomenų saugojimui.
@@ -84,7 +84,7 @@ Naudojamos technologijos
 - Scikit-learn: Biblioteka, skirta mašininio mokymosi modelių kūrimui ir duomenų normalizavimui.
 - Joblib: Biblioteka, skirta efektyviai išsaugoti ir įkelti Python objektus.
 
-Nauodojamos funkcijos:
+### Nauodojamos funkcijos:
 
 'cleen_cell_to_number' - funkcija, skirta pašalinti nereikalingus ženklus iš duomenų langelių, kadangi
   iš puslapio gauti duomenis turi mums nereikalingų simbolių. Taip pat ',' skaičiuose keičiami į '.'.
@@ -106,7 +106,7 @@ Nauodojamos funkcijos:
 ![code_20240507_081303_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/7c3933aa-ced5-497d-ba0b-0e4574262561)
 
 
-Pagrindiniai žingsniai
+### Pagrindiniai žingsniai
 
 - Duomenų nuskaitymas: nuskaitomi duomenys iš CSV failų, sukurtų duomenų gavybos metu ir sukūriami 
   DF objektai, kurie galiausiai yra sujungiamį į vieną.
@@ -167,13 +167,13 @@ Rezultate buvo gautas išvalytas duomenų rinkinys, kurį sudarė:
 
 
 
-IV. Modelio kūrimas, mokymas ir vertinimas
+## IV. Modelio kūrimas, mokymas ir vertinimas
 Iš viso šiame darbe buvo kuriami trys modeliai: Random Forest Regression, Linear Regresion ir dirbtinių neuroninių
 tinklų Sequential modeliai.
 
-- Random Forest Regression
+## - Random Forest Regression
   
-Naudojamos technologijos
+### Naudojamos technologijos
 
 - Python
 - Scikit-learn: Biblioteka, skirta mašininio mokymosi modelių kūrimui ir duomenų normalizavimui.
@@ -181,7 +181,7 @@ Naudojamos technologijos
 - Pandas: Biblioteka duomenų analizei.
 - Matplotlib ir Seaborn: Grafikų braižymo bibliotekos.
 
-Pagrindiniai žingsniai
+### Pagrindiniai žingsniai
 
 - Duomenų nuskaitymas: Nuskaitomi duomenys iš duomenų bazės ir sudaromas DataFrame.
 
@@ -224,7 +224,7 @@ Ir pateikiami rezultatai.
 
 ![image](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/f0cf0945-b5ed-4922-be03-1d907105763b)
 
-Išvados:
+### Išvados:
 Pateiktas grafikas nurodo santyki tarp modelio prognozuotų ir realių kainų. Kiekvienas taškelis reprezentuoja
 vieną turto vienetą. Raudona įstriža linija demonstruoja idealią teorinę prognozę (mūsų siekiamybę).
 Taškų atstumas iki linijos norodo paklaidos dydį mūsų spėjimuose.
@@ -238,9 +238,9 @@ Apibendrinant, galima pasakyti, kad modelis "pagauna" bendrą tendenciją, bet j
 kažkuo išskirtinius, ypatingai ženkliai nuo kitų brangesnius turto vienetus. 
 
 
-- Linear Regression
+## - Linear Regression
 
-Naudojamos technologijos
+### Naudojamos technologijos
 
 - Python
 - Pandas: Biblioteka duomenų analizei.
@@ -248,7 +248,7 @@ Naudojamos technologijos
 - SQLite3: Integruota duomenų bazė skirta duomenų saugojimui.
 - Matplotlib: Biblioteka grafikų braižymui.
 
-Pagrindiniai žingsniai
+### Pagrindiniai žingsniai
 
 - Duomenų nuskaitymas: Nuskaitomi duomenys iš duomenų bazės ir sudaromas DataFrame.
 
@@ -267,7 +267,7 @@ Pagrindiniai žingsniai
 ![code_20240506_193256_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/52d1e4ce-266d-4d70-a41d-78c6fd59cd2a)
 ![image](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/368e0a4b-41e7-4784-89cc-8c31bdb09d3b)
 
-Išvados
+### Išvados
 Įveritnus gautą grafiką, ir modelio veikimo rodiklių rezultatus, galima daryti išvadas, kad
 modelis duoda panašų, bet kiek prastesnį rezultatą, nei Random Forest Regresssion modelis.
 Bendra tendencija yra pagaunama, modeliui sekasi neblogai prognozuoti žemėsnės kainos ir standartinį 
@@ -275,12 +275,12 @@ turtą, bet sunkiau yra su brangesniu turtu. Matome, kad tokios prognozės yra n
 
 ![Screenshot 2024-05-06 at 19 39 12](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/4a11b7c8-2aa4-4f54-963e-d21e96bfdeef)
 
-- Sequential
+## - Sequential
 
 Šis modelis yra sukurtas naudojant giliojo mokymosi techniką ir apmokomas naudojant tuos pačius
 mokymo ir testavimo duomenų rinkinius.
 
-Naudojamos technologijos
+### Naudojamos technologijos
 
 - Python
 - TensorFlow: Giliojo mokymosi įrankių biblioteka.
@@ -289,7 +289,7 @@ Naudojamos technologijos
 - Pandas: Biblioteka duomenų  analizei.
 - Matplotlib ir Seaborn: Bibliotekos vizualizacijai.
 
-Pagrindiniai žingsniai
+### Pagrindiniai žingsniai
 
 - Duomenų nuskaitymas: Duomenys yra nuskaitomi iš duomenų bazės ir sudaromas DataFrame.
 - Duomenų dalijimas: Duomenys yra padalinami į mokymo ir testavimo rinkinius.
@@ -321,7 +321,7 @@ sklandžiai, ir gaunamas tolygus rezultatas.
 
 ![image](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/8bb88842-86a5-4e82-99dd-7103fb8c04b5)
 
-Išvados
+### Išvados
 Apibendrinant šio modelio veikimą, matome, kad rezultatas yra labai panašus į gautą
 naudojant Random Forest regresijos modelį. Tiek grafikai, tiek rodikliai yra labai 
 panašūs. Tiesa šis modelis parodė minimaliai geresnį rezultatą, ko pasekoje galime gauti
@@ -336,7 +336,7 @@ savybės, realybėje nulemiančios ženkliai aukštesnę kainą. Tokie dalykai, 
 
 
 
-V. Prognozių generavimas
+## V. Prognozių generavimas
 
 Prognozės bus generuojamos išsagojus geriausius tikslumo rodiklius pasiekusio modelio konfigūraciją (Sequential).
 R2 rodiklis = 0.60, Vidutinė absoliuti paklaida = 60532.59. Tai reiškia, kad modelio suprognozuota kaina gali turėti
@@ -351,12 +351,12 @@ matyti gautus rezultatus, ir susipažinti su tam tikrais statistiniais rodikliai
 
 
 
-VI. Vizualinis pateikimas
+## VI. Vizualinis pateikimas
 
 Kaip ir aprašyta aukščiau, rezultatų ir skaičiavimų pateikimui bus naudojamas Flask. Šio įrankio pagalba
 sukurta paprasta WEB aplikacija, sukuriančia paprastą sąsają informacijai vartotojui pateikti.
 
-Naudojamos technologijos
+### Naudojamos technologijos
 
 - Python
 - Flask: Python web aplikacijų karkasas.
@@ -367,7 +367,7 @@ Naudojamos technologijos
 - NumPy:
 - Matplotlib ir Seaborn: Bibliotekos vizualizacijai.
 
-Pagrindiniai žingsniai
+### Pagrindiniai žingsniai
 
 - Duomenų užkrovimas: Užkraunami išsaugoti modelis ir normalizacijos skalė.
 
@@ -404,7 +404,7 @@ Pagrindiniai failai, užtikrinantys Flask aplikacijos veikimą:
 - statistics.html: Puslapis, kuriame vartotojas gali peržiūrėti statistinius duomenis.
 - error.html: Puslapis, kuriame rodomas klaidos pranešimas, jei įvyksta klaida vykdant prognozę.
 
- VI. Išvados
+ ## VI. Išvados
 
  Atliktas darbas padėjo geriau suprasti, kaip reikia dirbti su duomenimis, kaip juos atrinkti ir kai sutvarkyti,
  kad būtų gaunami siekiami rezultatai. Didžiausią iššūkį sudarė duomenų paruošimo žingsniai, nes lemiamą vaidmenį modelio
