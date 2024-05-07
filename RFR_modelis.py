@@ -30,10 +30,10 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.35, random
 
     # Nustatome hiperparamtrų tinklelį
 param_grid = {
-    'n_estimators': [150], # [25, 50, 100, 125, 150],
-    'max_depth': [None], #[None, 5, 10, 15, 20],
-    'min_samples_split': [2], #[2, 3, 5, 7, 10],
-    'min_samples_leaf': [5] #[1, 2, 3, 4, 5]
+    'n_estimators': [25, 50, 100, 125, 150],
+    'max_depth': [None, 5, 10, 15, 20],
+    'min_samples_split': [2, 3, 5, 7, 10],
+    'min_samples_leaf': [1, 2, 3, 4, 5]
 }
 
     # Sukuriame Grid Search objektą

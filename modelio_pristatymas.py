@@ -5,7 +5,7 @@ from tensorflow.keras.models import load_model
 from sklearn.preprocessing import OneHotEncoder
 import joblib
 from Statistine_analize import (calculate_mean_values, df, show_price_per_m2, show_avg_area, show_avg_land_area,
-                                avg_price_per_m2, avg_area, avg_land_area)
+                                avg_price_per_m2, avg_area, avg_land_area, show_df_size, len_houses)
 
 
 # Inicializuojame flask aplikaciją.
@@ -163,6 +163,8 @@ def preview_statistics():
             image_path = show_avg_area(avg_area)
         elif selected_statistic == 'avg_land_area':
             image_path = show_avg_land_area(avg_land_area)
+        elif selected_statistic == 'len_houses':
+            image_path = show_df_size(len_houses)
 
         # Gražiname šabloną sugenerutiems statistiniams rodikliams atvaizduoti
         return render_template('statistics.html', selected_statistic=selected_statistic,

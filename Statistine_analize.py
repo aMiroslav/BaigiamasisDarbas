@@ -31,6 +31,7 @@ avg_price_per_m2 = df.groupby('Miestas:')['Kaina už m2.:'].mean().astype(int)
 print('Vidutinė kvadratinio metro kaina pagal miestus:')
 print(avg_price_per_m2)
 
+    # Vizualizuojame vidutinę kiekvieno miesto kvadratinio metro kainą
 def show_price_per_m2(avg_price_per_m2):
     try:
         plt.figure(figsize=(10, 6))
@@ -49,13 +50,13 @@ def show_price_per_m2(avg_price_per_m2):
 
         plt.tight_layout()
 
-        # Generate a unique filename for each image
+        # Generuojame paveikslėlį peržiūrai
         image_filename = 'avg_price_per_m2.png'
         image_path = os.path.join(STATIC_DIR, image_filename)
         plt.savefig(image_path)
         plt.clf()
 
-        # Return the path to the saved image
+        # Gražiname kelią iki paveikslelio, dinaminiam užktovimui
         return image_path
     except Exception as e:
         print(f"Error occurred while generating the plot: {e}")
@@ -67,6 +68,7 @@ print('Vidutinis namo dydis pagal miestus:')
 print(avg_area)
 
 
+    # Vizualizuojame vidutinį kiekvieno namo dydį
 def show_avg_area(avg_area):
     try:
         plt.figure(figsize=(10, 6))
@@ -85,13 +87,13 @@ def show_avg_area(avg_area):
 
         plt.tight_layout()
 
-        # Generate a unique filename for each image
+        # Generuojame paveikslėlį peržiūrai
         image_filename = 'avg_area.png'
         image_path = os.path.join(STATIC_DIR, image_filename)
         plt.savefig(image_path)
         plt.clf()
 
-        # Return the path to the saved image
+        # Gražiname kelią iki paveikslelio, dinaminiam užktovimui
         return image_path
     except Exception as e:
         print(f"Error occurred while generating the plot: {e}")
@@ -103,6 +105,7 @@ print('Vidutinis sklypo dydis pagal miestus:')
 print(avg_land_area)
 
 
+    # Vizualizuojame vidutinį sklypo plotą
 def show_avg_land_area(avg_land_area):
     try:
         plt.figure(figsize=(10, 6))
@@ -121,13 +124,49 @@ def show_avg_land_area(avg_land_area):
 
         plt.tight_layout()
 
-        # Generate a unique filename for each image
+        # Generuojame paveikslėlį peržiūrai
         image_filename = 'avg_land_area.png'
         image_path = os.path.join(STATIC_DIR, image_filename)
         plt.savefig(image_path)
         plt.clf()
 
-        # Return the path to the saved image
+        # Gražiname kelią iki paveikslelio, dinaminiam užktovimui
+        return image_path
+    except Exception as e:
+        print(f"Error occurred while generating the plot: {e}")
+
+    # Skaičiuojame įrašų kiekį kiekviename mieste
+len_houses = df.groupby('Miestas:').size().sort_values(ascending=False)
+print('Duoemenų rinkinio dydis:')
+print(len_houses)
+
+
+    # Vizualizuojame įrašų kiekį kiekviename mieste
+def show_df_size(len_houses):
+    try:
+        plt.figure(figsize=(10, 6))
+        ax = sns.barplot(x=len_houses.index, y=len_houses.values, color='yellow')
+        plt.title('Duomenų rinkinio dydis (kiekis pagal miestą)')
+        plt.xlabel('Miestas')
+        plt.ylabel('Objektų kiekis (vnt.)')
+        plt.xticks(rotation=45)
+
+        for p in ax.patches:
+            ax.annotate(f'{int(p.get_height())}',
+                        (p.get_x() + p.get_width() / 2., p.get_height()),
+                        ha='center', va='center',
+                        xytext=(0, 10),
+                        textcoords='offset points')
+
+        plt.tight_layout()
+
+        # Generuojame paveikslėlį peržiūrai
+        image_filename = 'len_houses.png'
+        image_path = os.path.join(STATIC_DIR, image_filename)
+        plt.savefig(image_path)
+        plt.clf()
+
+        # Gražiname kelią iki paveikslelio, dinaminiam užktovimui
         return image_path
     except Exception as e:
         print(f"Error occurred while generating the plot: {e}")

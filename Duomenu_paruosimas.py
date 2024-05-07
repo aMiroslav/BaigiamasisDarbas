@@ -37,6 +37,7 @@ df_klaipeda = remove_extreme_values(df_kl)
 df_siauliai = remove_extreme_values(df_siau)
 df_panevezys = remove_extreme_values(df_pan)
 df_alytus = remove_extreme_values(df_al)
+print('Ribinės reikšmės pašalintos')
 
     # Sujungiame visus duomenis į vieną DataFrame
 df = pd.concat([df_vilnius, df_kaunas, df_klaipeda, df_siauliai, df_panevezys, df_alytus],
@@ -82,6 +83,7 @@ def calculate_room_count(row):
         return round(row['Plotas:'] / avg_room_space)
     else:
         return row['Kambarių sk.:']
+
     # Pritaikome funkciją trūkstamoms reikšmėms užpildyti
 df_cleaned['Kambarių sk.:'] = df_cleaned.apply(calculate_room_count, axis=1)
 df_cleaned.drop(['Kambario plotas'], axis=1, inplace=True)
