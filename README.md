@@ -138,7 +138,9 @@ Pagrindiniai žingsniai
 ![code_20240507_081921_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/e2b534ea-d199-4ed0-b21a-135f8eedc4fb)
 
 - Duomenų kodavimas ir normalizavimas: Kategoriniai kintamieji yra koduojami naudojant One-Hot Encoder'į, 
-  o skaitiniai kintamieji yra normalizuojami naudojant Min-Max Scaler'į.
+  o skaitiniai kintamieji yra normalizuojami naudojant Min-Max Scaler'į. Mūsų duomenų rinkinyje dauguma
+  duomenų buvo kategoriniai. Skaitiniai duomenys buvo tik: Kaina, Plotas, Sklypo Plotas, Kambarių sk. ir
+  Statybos Metai. Kaina nebuvo standartizuota, kadangi tai yra mūsų modelio spėjimo tikslas. 
   
 ![code_20240507_081955_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/a43dfd7b-fe99-4a1a-a4b1-779655411a4b)
 
