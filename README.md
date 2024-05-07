@@ -4,15 +4,15 @@ Projektas skirtas namų kainų prognozavimui, remiantis įvairiomis savybėmis.
 
 Prejektas sudarytas iš kelių dalių:
 
-1. Įvadas
-2. Duomenų surinkimas 
-3. Duomenų paruošimas ir apdorojimas 
-4. Modelio kūrimas, mokymas ir vertinimas 
-5. Prognozių generavimas 
-6. Vizualinis pateikimas 
-7. Išvados
+I. Įvadas
+II. Duomenų surinkimas 
+III. Duomenų paruošimas ir apdorojimas 
+IV. Modelio kūrimas, mokymas ir vertinimas 
+V. Prognozių generavimas 
+VI. Vizualinis pateikimas 
+VII. Išvados
 
-1. Įvadas
+I. Įvadas
 Projektas buvo orientuotas į Lietuvos rinką, tad projektui buvo pasirinkta analizuoti
 nekilnojomojo turto, o kenkrečiau namų kainas Lietuvoje. Buvo orientuojamasi į didžiausius 
 miestus, tad objektu buvo pasirinkti: Vilnius, Kaunas, Klaipėda, Šiauliai, Panevėžys ir 
@@ -20,15 +20,17 @@ Alytus. Peržvelgus nekilnojamo turto sklebimų portalus, šie miestai turėjo d
 duomenų. Duomenų rinkimui buvo pasirinktas didžiausias ir populiariausias skelbimų portaslas
 aruodas.lt.
 
-2. Duomenų rinkimas
+
+
+II. Duomenų rinkimas
 
 Naudotos technologijos:
 
 - Python
-- BeautifulSoup: 
+- BeautifulSoup: Biblioteka skirta analizuoti HTML ir XML dokumentus.
 - Selenium: Nešiojama karkaso testavimui interneto programoms.
 - WebDriver Manager: Įrankis, skirtas valdyti interneto draiverius.
-- Pandas: 
+- Pandas: Biblioteka duomenų analizei.
 
 Naudotos funkcijos:
 
@@ -36,15 +38,14 @@ Naudotos funkcijos:
 pagrindinėje funkcijoje, kad būtų galima uždaryti slapukų sutikimo langą norint atlikti kitas 
 operacijas puslapyje. 
 
-![code_20240506_164746_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/74aea71a-7604-46d6-bf4b-2af2b9f2fc7c)
-
+![code_20240507_080512_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/509e87a7-fb7e-4954-a5d9-2ff232a9d5eb)
 
 'scrape_page_data(link)' - funkcija skirta išgauti duomenims apie vieną nekilnojamojo turto objektą.
 Iškviečiama pagrindinėje funkcijoje ir iteruojamą per kiekvieną atverčiamą puslapį. 
 Funkcija naudoja parametrą 'link' - puslpaio, iš kurio bus išgaunami duomenis, URL.
 Funkcija gražiną 'page_data', žodyną, kuriame saugomi duomenys apie vieno NT objekto atributus
 
-![code_20240506_165336_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/1204ea94-e088-44f5-b5a8-0ec9846772ff)
+![code_20240507_080603_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/a6bd1016-4091-48f4-9e5e-199aa2edc1ff)
 
 'scrape_and_save(start_page, end_page)' - funkcija, skirta nuorodų, apie kiekvieną NT objoktą išgavimui, 
 duomenų išsaugojimui CSV formatu, iteruojant per visus puslapius iš atitinkamų skelbimų filtro
@@ -52,19 +53,24 @@ kategorijos. Funkcija iškviečiama kaip pagrindinė funkcija, kad būtų pradė
 Naudojami parametrai:     'start_page' - pradinis puslapio numeris, nuo kurio 
 'end_page' - paskutinis puslapio numeris, ties kuriuo baigiamas duomenų išgavimas.
 
-![code_20240506_170311_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/87a1e48f-5a16-40e3-845c-f0bdce4408ad)
+![code_20240507_080713_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/8a6b2a88-b82f-49bb-9910-fda7ccfb1134)
 
 Duomenų išgavimą pradedame paprasta komanda, kuria iškviečiama pagrindinė funkcija, pradedama
 duomenų gavyba ir galiausiai duomenys išsaugomi. 
 
-![code_20240506_170424_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/de3b8c0d-6604-4d9e-a73a-73ffcc2f5f94)
+![code_20240507_080757_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/0f01b60e-133c-4b42-89a1-49ecf2e7fb2e)
 
 Šis procesas atliekamas atskirai kiekvienam miestui (įtraukus ir rajoną). Kiekvienam miestui yra 
 paruoštas atitinkamas kodas, su konkrečia pradine nuorodą, galutinio failo pavadinimu ir
 galutinio puslapio skaičiumi
 
+Rezultate buvo gauti tokio pavyzdžio CSV failai:
+![Screenshot 2024-05-07 at 08 24 17](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/1f1a6a90-3fac-433a-9f82-5fb6d743e232)
 
-3. Duomenų paruošimas ir apdorojimas
+
+
+III. Duomenų paruošimas ir apdorojimas
+
 Prieš atliekant tolimesnius žingsniu, gautus duomenis svarbu tinkamai paruošti. Šis procesas
 apima duomenų nuskaitymą iš CSV failų, duomenų valymą, transformavimą ir kodavimą bei galutinių 
 duomenų išsaugojimą duomenų bazėje.
@@ -76,29 +82,28 @@ Naudojamos technologijos
 - Pandas: Biblioteka duomenų analizei.
 - Regular Expressions (re): Python modulis teksto šablonų atpažinimui.
 - Scikit-learn: Biblioteka, skirta mašininio mokymosi modelių kūrimui ir duomenų normalizavimui.
+- Joblib: Biblioteka, skirta efektyviai išsaugoti ir įkelti Python objektus.
 
 Nauodojamos funkcijos:
 
--'cleen_cell_to_number' - funkcija, skirta pašalinti nereikalingus ženklus iš duomenų langelių, kadangi
+'cleen_cell_to_number' - funkcija, skirta pašalinti nereikalingus ženklus iš duomenų langelių, kadangi
   iš puslapio gauti duomenis turi mums nereikalingų simbolių. Taip pat ',' skaičiuose keičiami į '.'.
+  
+![code_20240507_080958_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/0cbede94-6ccd-44a8-9c42-1a37d67c54e3)
 
-![code_20240506_172734_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/af21db66-aaf0-4e3c-9146-978984890b3f)
-
-
-- 'remove_extreme_values' - funkcija, skirta pašalinti ribinėms reikšmės (minimalioms ir maksimalioms), 
+'remove_extreme_values' - funkcija, skirta pašalinti ribinėms reikšmės (minimalioms ir maksimalioms), 
   kurios gali turėti įtakos modelio tiklsumui
+  
+![code_20240507_081023_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/d2c80809-5344-40a5-8020-a38feeef160b)
 
-![code_20240506_172809_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/b9f5cf46-6a02-4bb3-873a-4300fd9e07b6)
-
-
-- 'calculate_room_count' - funkcija, skirta užpildyti tuštiems laukeliams, stulpelyje 'Kambarių sk.'.
+'calculate_room_count' - funkcija, skirta užpildyti tuštiems laukeliams, stulpelyje 'Kambarių sk.'.
   Šis stulpelis turėjo daug tuščių reikšmių, tad jo užpildymas vidutiniu kambarių skaičiaus dydžiu
   galėtų turėti neigiamos įtakos modelio tikslumui. Buvo pasirinktas kitas būdas: remiantis turimais
   duomenimis iš pradžių apskaičiuotas vidutinis vieno kambario plotas. Tad tusčios vietos užpildytos
   suapvalinta verte, gauta padalinus namo plotą iš vidutinio kambario ploto
-
-![code_20240506_173313_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/92fff7bc-3f21-46bd-88d8-1edf37d47358)
-![code_20240506_172834_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/d9ab93a6-a7da-45d2-abd2-c8fc58ef126a)
+  
+![code_20240507_081059_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/0b1857aa-cf7e-43ff-b4f6-dbde0fbbf805)
+![code_20240507_081303_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/7c3933aa-ced5-497d-ba0b-0e4574262561)
 
 
 Pagrindiniai žingsniai
@@ -106,43 +111,45 @@ Pagrindiniai žingsniai
 - Duomenų nuskaitymas: nuskaitomi duomenys iš CSV failų, sukurtų duomenų gavybos metu ir sukūriami 
   DF objektai, kurie galiausiai yra sujungiamį į vieną.
   
-![code_20240506_172927_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/96728763-9df8-4bd1-9a52-952a135eb097)
+  ![code_20240507_081441_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/0cf58441-46e5-4fb2-a8df-ede8515fb03b)
 
 - Duomenų valymas ir transformavimas: pašalinami nereikalingi simboliai ir ribinės kainų reikšmės. 
   Taip pat pašalinami dublikatai ir stulpeliai, kurie nebus naudojami tolimesnėje analizėje.
   Skaitinės reikšmės konvertuojamos į skaičius. Užpildomos trūkstamos vertės.
   
-![code_20240506_173110_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/a615be74-c5b4-4e54-aa63-09ccba62f20e)
+  ![code_20240507_081614_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/5d745a56-cd86-4a46-b8e3-c45a453e5d45)
 
 - Statybos metų stulpelis turėjo eilutes, kuriose buvo nurodyta daugiau nei viena data ir papildomas tekstas.
   Pasirinkome pirmą datą, tekstą pašalinome
-
-![code_20240506_173607_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/39695abf-28b3-4abf-92dc-9de3f1eb3b91)
+  
+![code_20240507_081656_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/455b048d-b71b-4be0-a602-b3ea5af7b9ab)
 
 - Iš adreso stulpelio išgavome tik miestą (arbą rajoną) ir suvienodinome pavadinimus
-
-  ![code_20240506_173716_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/9bdb5a16-9374-4088-8dcc-bcd616495f87)
+  
+![code_20240507_081744_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/a04cd345-a04f-47be-9dcd-6bdc08589397)
 
 - Kai kurie kategoriniai atribūtai (Šildymo tipas, Vanduo) turėjo daug unikalių kategorijų, arba pasikartojimų,
   tad buvo nuspręsta palikti tik pirmu pasirinkimu įrašytą opciją
-
-![code_20240506_173958_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/986d56ec-53e8-4cda-bf98-0e1849f97d7e)
+  
+![code_20240507_081839_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/37bdd515-b235-4e1b-ac37-955c4059adb7)
 
 - Patikriname ar duomenų rinkinyje neliko tuščių reikšmių.
-
-![code_20240506_173438_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/11743daf-a809-4cf9-aa15-5360c7387db6)
+  
+![code_20240507_081921_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/e2b534ea-d199-4ed0-b21a-135f8eedc4fb)
 
 - Duomenų kodavimas ir normalizavimas: Kategoriniai kintamieji yra koduojami naudojant One-Hot Encoder'į, 
   o skaitiniai kintamieji yra normalizuojami naudojant Min-Max Scaler'į.
-
-  ![code_20240506_174057_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/3d8f71fa-2051-4b9d-ac59-7d12a7b5e78c)
+  
+![code_20240507_081955_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/a43dfd7b-fe99-4a1a-a4b1-779655411a4b)
 
 - Duomenų išsaugojimas: Koduoti ir normalizuoti duomenys yra išsaugomi duomenų bazėje, 
   taip pat papildomai išsaugomi ir naudoti normalizavimo parametrai.
+  
+![code_20240507_082037_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/0332a297-2423-4fb2-af14-4250b023b237)
 
-![code_20240506_174153_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/975532a1-090e-47f3-8751-01c6adeaf86f)
 
-4. Modelio kūrimas, mokymas ir vertinimas
+
+IV. Modelio kūrimas, mokymas ir vertinimas
 Iš viso šiame darbe buvo kuriami trys modeliai: Random Forest Regression, Linear Regresion ir dirbtinių neuroninių
 tinklų Sequential modeliai.
 
@@ -182,6 +189,7 @@ Pagrindiniai žingsniai
 
   ![code_20240506_181003_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/4a587f97-a278-4c03-8b42-0263d1ec8514)
   ![image](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/e7e3fbd3-3152-4313-ba0a-752d7f9617d7)
+  ![Screenshot 2024-05-07 at 08 28 04](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/d9c130a8-05f7-4a3e-a2b5-40e2e8e87c0b)
 
 Papildomai, bus atvaizduojama savybių svarba aspkaičiuojant prognozuojamą kainą. Kadangi duomenys yra koduoti, 
 turime juos sugrupuoti į motinines kategorijas. Tam tisklui padaromas žodynas grupavimui.
@@ -308,7 +316,9 @@ randamų mūsų duomenų rinkinyje. Tai gali būti ypatinga vieta mieste ar koki
 savybės, realybėje nulemiančios ženkliai aukštesnę kainą. Tokie dalykai, savo ruožtu, nėra vertinami mūsų modelių.
 Šios objektyvios priežastys nulemia galutinį pateiktų skaičiavimų rezultatų tiklsumą.
 
-5. Prognozių generavimas
+
+
+V. Prognozių generavimas
 
 Prognozės bus generuojamos išsagojus geriausius tikslumo rodiklius pasiekusio modelio konfigūraciją (Sequential).
 R2 rodiklis = 0.60, Vidutinė absoliuti paklaida = 60532.59. Tai reiškia, kad modelio suprognozuota kaina gali turėti
@@ -321,7 +331,9 @@ MinMax Scaler konfigūracija.
 Interaktyviai sąsajai sukurti naudosime Python web aplikacijų kurimo karkasą Flask. Taip vartotojai galės suvesti duomenys, 
 matyti gautus rezultatus, ir susipažinti su tam tikrais statistiniais rodikliais.
 
-6. Vizualinis pateikimas
+
+
+VI. Vizualinis pateikimas
 
 Kaip ir aprašyta aukščiau, rezultatų ir skaičiavimų pateikimui bus naudojamas Flask. Šio įrankio pagalba
 sukurta paprasta WEB aplikacija, sukuriančia paprastą sąsają informacijai vartotojui pateikti.
@@ -360,8 +372,8 @@ Pagrindiniai žingsniai
 
 
 - Statistika: Vartotojas gali peržiūrėti statistinius duomenis apie nekilnojamąjį turtą iš naudojamo duomenų rinkinio.
-  Statistiniai duomenys išvedami naujame lape, pateikia grafikus apie vidutinę kvadratinio metro kainą, vidutinį namų dydį bei vidutinį
-  sklypo dydi.
+  Statistiniai duomenys išvedami naujame lape, pateikia grafikus apie vidutinę kvadratinio metro kainą, vidutinį namų dydį, vidutinį
+  sklypo dydį, objektų kiekį kiekviename mieste.
 
   ![code_20240506_223901_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/c7e0126b-c353-4922-969b-ba01219ff06f)
 
@@ -373,4 +385,19 @@ Pagrindiniai failai, užtikrinantys Flask aplikacijos veikimą:
 - result.html: Puslapis, kuriame pateikiama prognozuojama kaina.
 - statistics.html: Puslapis, kuriame vartotojas gali peržiūrėti statistinius duomenis.
 - error.html: Puslapis, kuriame rodomas klaidos pranešimas, jei įvyksta klaida vykdant prognozę.
- 
+
+ VI. Išvados
+
+ Atliktas darbas padėjo geriau suprasti, kaip reikia dirbti su duomenimis, kaip juos atrinkti ir kai sutvarkyti,
+ kad būtų gaunami siekiami rezultatai. Didžiausią iššūkį sudarė duomenų paruošimo žingsniai, nes lemiamą vaidmenį modelio
+ veikimui ir prognozių tikslumui turėjo  būtent tinkamas duomenų standartizavimas ir normalizavimas. Pritaikius
+ vienodus normalizavimo metodus tiek kuriant modelį tiek generuojant prognozes (sutvarkant vartotojo pateiktus
+ rodiklius) buvo užtikrintas tinkamo rezultato gavimas. 
+
+ Projektas leido išmokti dirbti su įvairiomis bibliotekomis, jas geriaus suprasti. Kitu svarbiu aspektu buvo
+ grafinis rezultatų atvaizdavimas. Manau tokio pobūdžio darbui puikiai tiko užduotis, skirta interaktyvui
+ sukurti. Tai leidžia vartotojui vizualiai pamatyti visą sudėtingą procesą labai paprastoje formoje. 
+
+ Modelį ir visą projektą galima būtų tobulinti, siekiant geresnio tikslumo, bet tam reikėtų tikslinti įvesties duomenis
+ ir atlikti išsamesnę, skirtingos kainų kategorijos turto analizę. Radus ryšius ir savybes, lemiančius
+ prabangių turto objektų kainą galima būtų juos įtraukti į mokymo procesą.
