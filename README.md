@@ -147,6 +147,10 @@ Pagrindiniai žingsniai
   
 ![code_20240507_082037_via_10015_io](https://github.com/aMiroslav/BaigiamasisDarbas/assets/163419923/0332a297-2423-4fb2-af14-4250b023b237)
 
+Rezultate buvo gautas išvalytas duomenų rinkinys, kurį sudarė:
+- 12 savybių stulpelių
+- 4614 eilučių unikalių turto objektų
+
 
 
 IV. Modelio kūrimas, mokymas ir vertinimas
