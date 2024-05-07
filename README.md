@@ -149,6 +149,18 @@ Pagrindiniai žingsniai
 
 Rezultate buvo gautas išvalytas duomenų rinkinys, kurį sudarė:
 - 12 savybių stulpelių
+  - Kaina
+  - Plotas
+  - Sklypo plotas
+  - Kambarių sk.
+  - Pastato tipas
+  - Namo tipas
+  - Šildymas
+  - Vanduo
+  - Įrengimas
+  - Pastato energijos suvartojimo kl.
+  - Statybos metai
+  - Miestas
 - 4614 eilučių unikalių turto objektų
 
 
